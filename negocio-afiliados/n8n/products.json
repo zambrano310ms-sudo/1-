@@ -23,6 +23,12 @@
     { "key": "ASIN_NETATMO",       "asin": "PENDIENTE", "nombre": "Netatmo (termostato)",       "cluster": "climatizacion" },
     { "key": "ASIN_ECHO_DOT",      "asin": "PENDIENTE", "nombre": "Echo Dot",                   "cluster": "control-y-ecosistema" },
     { "key": "ASIN_ECHO_SHOW",     "asin": "PENDIENTE", "nombre": "Echo Show",                  "cluster": "control-y-ecosistema" },
-    { "key": "ASIN_ECHO_POP",      "asin": "PENDIENTE", "nombre": "Echo Pop",                   "cluster": "control-y-ecosistema" }
+    { "key": "ASIN_ECHO_POP",      "asin": "PENDIENTE", "nombre": "Echo Pop",                   "cluster": "control-y-ecosistema" },
+    { "key": "ASIN_NUKI",          "asin": "PENDIENTE", "nombre": "Nuki (cerradura)",           "cluster": "seguridad" },
+    { "key": "ASIN_YALE_LINUS",    "asin": "PENDIENTE", "nombre": "Yale Linus (cerradura)",     "cluster": "seguridad" },
+    { "key": "ASIN_SWITCHBOT_LOCK","asin": "PENDIENTE", "nombre": "SwitchBot Lock",             "cluster": "seguridad" },
+    { "key": "ASIN_GOVEE_STRIP",   "asin": "PENDIENTE", "nombre": "Govee (tira LED)",           "cluster": "iluminacion-y-energia" },
+    { "key": "ASIN_HUE_STRIP",     "asin": "PENDIENTE", "nombre": "Philips Hue (tira LED)",     "cluster": "iluminacion-y-energia" },
+    { "key": "ASIN_LEPRO_STRIP",   "asin": "PENDIENTE", "nombre": "LE/Lepro (tira LED)",        "cluster": "iluminacion-y-energia" }
   ]
 }
