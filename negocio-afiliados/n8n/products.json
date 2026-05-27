@@ -8,6 +8,18 @@
     { "key": "ASIN_DREAME_D10",    "asin": "PENDIENTE", "nombre": "Dreame D10 Plus Gen2",       "cluster": "limpieza-inteligente" },
     { "key": "ASIN_TAPO_CAM",      "asin": "PENDIENTE", "nombre": "TP-Link Tapo (cámara)",      "cluster": "seguridad" },
     { "key": "ASIN_AQARA_CAM",     "asin": "PENDIENTE", "nombre": "Aqara (cámara)",             "cluster": "seguridad" },
-    { "key": "ASIN_EUFY_CAM",      "asin": "PENDIENTE", "nombre": "Eufy (cámara)",              "cluster": "seguridad" }
+    { "key": "ASIN_EUFY_CAM",      "asin": "PENDIENTE", "nombre": "Eufy (cámara)",              "cluster": "seguridad" },
+    { "key": "ASIN_EUFY_DOORBELL", "asin": "PENDIENTE", "nombre": "Eufy (videoportero)",        "cluster": "seguridad" },
+    { "key": "ASIN_RING_DOORBELL", "asin": "PENDIENTE", "nombre": "Ring Video Doorbell",        "cluster": "seguridad" },
+    { "key": "ASIN_AQARA_DOORBELL","asin": "PENDIENTE", "nombre": "Aqara (videoportero)",       "cluster": "seguridad" },
+    { "key": "ASIN_TAPO_P110",     "asin": "PENDIENTE", "nombre": "TP-Link Tapo P110",          "cluster": "iluminacion-y-energia" },
+    { "key": "ASIN_MEROSS_PLUG",   "asin": "PENDIENTE", "nombre": "Meross (enchufe)",           "cluster": "iluminacion-y-energia" },
+    { "key": "ASIN_AMAZON_PLUG",   "asin": "PENDIENTE", "nombre": "Amazon Smart Plug",          "cluster": "iluminacion-y-energia" },
+    { "key": "ASIN_TAPO_BULB",     "asin": "PENDIENTE", "nombre": "TP-Link Tapo (bombilla)",    "cluster": "iluminacion-y-energia" },
+    { "key": "ASIN_HUE_BULB",      "asin": "PENDIENTE", "nombre": "Philips Hue (bombilla)",     "cluster": "iluminacion-y-energia" },
+    { "key": "ASIN_GOVEE_LED",     "asin": "PENDIENTE", "nombre": "Govee (tira LED)",           "cluster": "iluminacion-y-energia" },
+    { "key": "ASIN_TADO",          "asin": "PENDIENTE", "nombre": "tado° (termostato)",         "cluster": "climatizacion" },
+    { "key": "ASIN_NEST",          "asin": "PENDIENTE", "nombre": "Google Nest (termostato)",   "cluster": "climatizacion" },
+    { "key": "ASIN_NETATMO",       "asin": "PENDIENTE", "nombre": "Netatmo (termostato)",       "cluster": "climatizacion" }
   ]
 }
