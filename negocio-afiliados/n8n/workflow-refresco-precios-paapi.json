@@ -1,0 +1,171 @@
+{
+  "name": "Afiliados · Refresco de precios PA-API",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "aaaaaaaa-0000-0000-0000-000000000001",
+      "name": "Cada 24 h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lista de productos a refrescar. Sustituye cada asin PENDIENTE por el ASIN real.\n// (debe coincidir con products.json del proyecto)\nconst productos = [\n  { asin: \"PENDIENTE\", nombre: \"Cecotec Conga Z100\" },\n  { asin: \"PENDIENTE\", nombre: \"Roborock Saros Z70\" },\n  { asin: \"PENDIENTE\", nombre: \"Xiaomi Robot Vacuum H40\" },\n  { asin: \"PENDIENTE\", nombre: \"Dreame D10 Plus Gen2\" },\n  { asin: \"PENDIENTE\", nombre: \"TP-Link Tapo\" },\n  { asin: \"PENDIENTE\", nombre: \"Aqara\" },\n  { asin: \"PENDIENTE\", nombre: \"Eufy\" }\n];\nreturn productos.map(p => ({ json: p }));"
+      },
+      "id": "aaaaaaaa-0000-0000-0000-000000000002",
+      "name": "Cargar productos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// =============================================================================\n//  PA-API 5.0 · GetItems con firma AWS SigV4  (nodo \"Code\" de n8n)\n//  Modo: \"Run Once for All Items\".\n//  Trae precio, disponibilidad, título e imagen reales de Amazon.\n//\n//  REQUISITOS (fase automática, tras tus 3 primeras ventas):\n//   - Define estas variables de entorno en n8n:\n//       PAAPI_ACCESS_KEY, PAAPI_SECRET_KEY, PAAPI_PARTNER_TAG\n//     (el acceso a $env requiere que N8N_BLOCK_ENV_ACCESS_IN_NODE no esté activado)\n//   - El nodo anterior debe entregar items con un campo `asin` (uno por producto).\n//\n//  Mercado configurado: Amazon España. Para otro país cambia HOST/REGION/MARKETPLACE.\n// =============================================================================\nconst crypto = require('crypto');\n\nconst ACCESS_KEY  = $env.PAAPI_ACCESS_KEY;\nconst SECRET_KEY  = $env.PAAPI_SECRET_KEY;\nconst PARTNER_TAG = $env.PAAPI_PARTNER_TAG;\n\nconst HOST        = 'webservices.amazon.es';\nconst REGION      = 'eu-west-1';\nconst MARKETPLACE = 'www.amazon.es';\nconst SERVICE     = 'ProductAdvertisingAPI';\nconst PATH        = '/paapi5/getitems';\nconst TARGET      = 'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.GetItems';\n\nconst hmac      = (key, data) => crypto.createHmac('sha256', key).update(data, 'utf8').digest();\nconst sha256hex = (data) => crypto.createHash('sha256').update(data, 'utf8').digest('hex');\n\n// 1) ASINs reales (descarta los PENDIENTE)\nconst asins = $input.all()\n  .map(i => i.json.asin)\n  .filter(a => a && a !== 'PENDIENTE');\n\nif (asins.length === 0) {\n  return [{ json: { aviso: 'No hay ASINs reales todavía. Rellena products.json y vuelve a ejecutar.' } }];\n}\n\n// 2) Payload GetItems (máx. 10 ASIN por llamada)\nconst payload = JSON.stringify({\n  ItemIds: asins.slice(0, 10),\n  PartnerTag: PARTNER_TAG,\n  PartnerType: 'Associates',\n  Marketplace: MARKETPLACE,\n  Resources: [\n    'ItemInfo.Title',\n    'Offers.Listings.Price',\n    'Offers.Listings.Availability.Message',\n    'Images.Primary.Medium'\n  ]\n});\n\n// 3) Firma AWS SigV4\nconst now       = new Date();\nconst amzDate   = now.toISOString().replace(/[:-]|\\.\\d{3}/g, ''); // YYYYMMDDTHHMMSSZ\nconst dateStamp = amzDate.slice(0, 8);\n\nconst canonicalHeaders =\n  `content-encoding:amz-1.0\\n` +\n  `content-type:application/json; charset=utf-8\\n` +\n  `host:${HOST}\\n` +\n  `x-amz-date:${amzDate}\\n` +\n  `x-amz-target:${TARGET}\\n`;\nconst signedHeaders = 'content-encoding;content-type;host;x-amz-date;x-amz-target';\nconst payloadHash   = sha256hex(payload);\nconst canonicalRequest = ['POST', PATH, '', canonicalHeaders, signedHeaders, payloadHash].join('\\n');\n\nconst algorithm       = 'AWS4-HMAC-SHA256';\nconst credentialScope = `${dateStamp}/${REGION}/${SERVICE}/aws4_request`;\nconst stringToSign    = [algorithm, amzDate, credentialScope, sha256hex(canonicalRequest)].join('\\n');\n\nconst kDate    = hmac('AWS4' + SECRET_KEY, dateStamp);\nconst kRegion  = hmac(kDate, REGION);\nconst kService = hmac(kRegion, SERVICE);\nconst kSigning = hmac(kService, 'aws4_request');\nconst signature = crypto.createHmac('sha256', kSigning).update(stringToSign, 'utf8').digest('hex');\n\nconst authorization = `${algorithm} Credential=${ACCESS_KEY}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`;\n\n// 4) Llamada a la PA-API\nconst res = await this.helpers.httpRequest({\n  method: 'POST',\n  url: `https://${HOST}${PATH}`,\n  headers: {\n    'content-encoding': 'amz-1.0',\n    'content-type': 'application/json; charset=utf-8',\n    'host': HOST,\n    'x-amz-date': amzDate,\n    'x-amz-target': TARGET,\n    'Authorization': authorization\n  },\n  body: payload,\n  json: false\n});\nconst data = typeof res === 'string' ? JSON.parse(res) : res;\n\n// 5) Normaliza la respuesta -> un item por producto\nconst encontrados = (data.ItemsResult && data.ItemsResult.Items) || [];\nconst out = encontrados.map(it => {\n  const listing = it.Offers && it.Offers.Listings && it.Offers.Listings[0];\n  return { json: {\n    asin: it.ASIN,\n    titulo: it.ItemInfo?.Title?.DisplayValue || null,\n    precio: listing?.Price?.DisplayAmount || null,\n    disponibilidad: listing?.Availability?.Message || null,\n    imagen: it.Images?.Primary?.Medium?.URL || null,\n    agotado: !listing || !listing.Price,\n    actualizado: new Date().toISOString()\n  }};\n});\n\n// Errores devueltos por la API (ASIN inválido, throttling, etc.)\nif (data.Errors) {\n  out.push({ json: { errores: data.Errors } });\n}\n\nreturn out;\n"
+      },
+      "id": "aaaaaaaa-0000-0000-0000-000000000003",
+      "name": "PA-API GetItems (SigV4)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        320
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "aaaaaaaa-0000-0000-0000-000000000004",
+      "name": "Guardar precios.json (configura hosting)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        920,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json.agotado }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "aaaaaaaa-0000-0000-0000-000000000005",
+      "name": "¿Producto agotado?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        920,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "TU_CHAT_ID_TELEGRAM",
+        "text": "=⚠️ Producto agotado o sin precio en Amazon:\nASIN: {{ $json.asin }}\nTítulo: {{ $json.titulo }}\nReemplázalo en el artículo.",
+        "additionalFields": {}
+      },
+      "id": "aaaaaaaa-0000-0000-0000-000000000006",
+      "name": "Alerta agotado (Telegram)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1160,
+        420
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "REEMPLAZAR",
+          "name": "Telegram bot afiliados"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Cada 24 h": {
+      "main": [
+        [
+          {
+            "node": "Cargar productos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cargar productos": {
+      "main": [
+        [
+          {
+            "node": "PA-API GetItems (SigV4)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PA-API GetItems (SigV4)": {
+      "main": [
+        [
+          {
+            "node": "Guardar precios.json (configura hosting)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "¿Producto agotado?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Producto agotado?": {
+      "main": [
+        [
+          {
+            "node": "Alerta agotado (Telegram)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false
+}

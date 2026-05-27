@@ -1,0 +1,13 @@
+{
+  "_comentario": "Fuente de verdad de los productos del sitio. Sustituye cada ASIN_* por el ASIN real (lo ves en la URL de Amazon: /dp/XXXXXXXXXX). El workflow de refresco de precios PA-API lee este archivo.",
+  "marketplace": "www.amazon.es",
+  "productos": [
+    { "key": "ASIN_CONGA_Z100",    "asin": "PENDIENTE", "nombre": "Cecotec Conga Z100",        "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_ROBOROCK_Z70",  "asin": "PENDIENTE", "nombre": "Roborock Saros Z70",         "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_XIAOMI_H40",    "asin": "PENDIENTE", "nombre": "Xiaomi Robot Vacuum H40",    "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_DREAME_D10",    "asin": "PENDIENTE", "nombre": "Dreame D10 Plus Gen2",       "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_TAPO_CAM",      "asin": "PENDIENTE", "nombre": "TP-Link Tapo (cámara)",      "cluster": "seguridad" },
+    { "key": "ASIN_AQARA_CAM",     "asin": "PENDIENTE", "nombre": "Aqara (cámara)",             "cluster": "seguridad" },
+    { "key": "ASIN_EUFY_CAM",      "asin": "PENDIENTE", "nombre": "Eufy (cámara)",              "cluster": "seguridad" }
+  ]
+}
