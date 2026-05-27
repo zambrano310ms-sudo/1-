@@ -13,101 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#f7f9fc; --surface:#ffffff; --ink:#0f1b2d; --muted:#5a6b80;
-    --brand:#0a6cff; --brand-dark:#0750c4; --accent:#10b981;
-    --amazon:#ff9900; --amazon-dark:#e88a00; --line:#e6ecf3;
-    --shadow:0 8px 30px rgba(15,27,45,.08); --radius:16px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
-  h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.2;letter-spacing:-.02em}
-  a{color:var(--brand);text-decoration:none}
-  img{max-width:100%}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-
-  /* Nav */
-  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
-  .logo{font-family:'Sora';font-weight:800;font-size:1.15rem}
-  .logo span{color:var(--brand)}
-  .nav-links{display:flex;gap:26px}
-  .nav-links a{color:var(--muted);font-weight:500;font-size:.95rem}
-  .nav-links a:hover{color:var(--ink)}
-  @media(max-width:760px){.nav-links{display:none}}
-
-  /* Disclosure banner */
-  .disclosure{background:#fff8ec;border-bottom:1px solid #ffe6bf;color:#7a5a17;font-size:.82rem;text-align:center;padding:8px 16px}
-
-  /* Hero */
-  .hero{padding:56px 0 28px}
-  .crumbs{font-size:.82rem;color:var(--muted);margin-bottom:18px}
-  .crumbs a{color:var(--muted)}
-  .hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;max-width:18ch}
-  .hero p.lead{font-size:1.12rem;color:var(--muted);max-width:62ch;margin-top:16px}
-  .meta-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:.85rem;color:var(--muted)}
-  .meta-row b{color:var(--ink)}
-
-  /* Verdict box */
-  .verdict{background:linear-gradient(135deg,#0a6cff,#0750c4);color:#fff;border-radius:var(--radius);padding:28px;margin:34px 0;box-shadow:var(--shadow)}
-  .verdict h2{color:#fff;font-size:1.25rem;margin-bottom:6px}
-  .verdict .pick{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:14px}
-  .verdict .pick .tag{background:rgba(255,255,255,.18);padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:600}
-
-  /* Buttons */
-  .btn-amz{display:inline-flex;align-items:center;gap:8px;background:var(--amazon);color:#1a1a1a;font-weight:700;padding:12px 22px;border-radius:10px;font-family:'Sora';font-size:.95rem;transition:.2s;border:0;cursor:pointer}
-  .btn-amz:hover{background:var(--amazon-dark);transform:translateY(-1px)}
-  .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--brand);border:1.5px solid var(--brand);font-weight:600;padding:11px 20px;border-radius:10px}
-
-  section{padding:30px 0}
-  h2.sec{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800;margin-bottom:8px}
-  .sec-sub{color:var(--muted);margin-bottom:22px;max-width:60ch}
-
-  /* Comparison table */
-  .table-scroll{overflow-x:auto;border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface)}
-  table{border-collapse:collapse;width:100%;min-width:620px}
-  th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:.92rem;vertical-align:middle}
-  thead th{background:#0f1b2d;color:#fff;font-family:'Sora';font-weight:600;font-size:.85rem}
-  tbody tr:hover{background:#f3f7ff}
-  .best-row{background:#ecfdf5}
-  .badge{display:inline-block;background:var(--accent);color:#fff;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:6px;margin-left:6px;vertical-align:middle}
-
-  /* Product cards */
-  .cards{display:grid;gap:22px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);display:grid;grid-template-columns:200px 1fr;gap:22px}
-  @media(max-width:680px){.card{grid-template-columns:1fr}}
-  .ph-img{aspect-ratio:1;background:linear-gradient(135deg,#eef3fb,#dbe7fb);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;color:#88a;font-size:.78rem;padding:14px;font-weight:500}
-  .card h3{font-size:1.25rem}
-  .card .role{color:var(--brand);font-weight:600;font-size:.85rem;margin-bottom:8px}
-  .proscons{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
-  @media(max-width:520px){.proscons{grid-template-columns:1fr}}
-  .proscons ul{list-style:none;font-size:.9rem}
-  .proscons li{padding-left:22px;position:relative;margin-bottom:6px}
-  .pros li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
-  .cons li::before{content:"–";position:absolute;left:0;color:#e05252;font-weight:700}
-  .for-who{background:#f3f7ff;border-left:3px solid var(--brand);padding:10px 14px;border-radius:8px;font-size:.9rem;margin:12px 0}
-  .verify{font-size:.74rem;color:#9aa7b8;font-style:italic;margin-top:6px}
-
-  /* Guide & FAQ */
-  .prose p{margin-bottom:14px;color:#33425a}
-  .prose h3{margin:22px 0 8px;font-size:1.2rem}
-  .faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px 18px;margin-bottom:12px}
-  .faq summary{cursor:pointer;font-weight:600;padding:14px 0;font-family:'Sora';list-style:none}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"+";float:right;color:var(--brand);font-weight:700}
-  .faq details[open] summary::after{content:"–"}
-  .faq details p{padding:0 0 16px;color:#33425a}
-
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(18px);transition:.6s ease}
-  .reveal.in{opacity:1;transform:none}
-
-  footer{background:#0f1b2d;color:#c3cede;margin-top:40px;padding:40px 0}
-  footer a{color:#9ec1ff}
-  .foot-discl{font-size:.82rem;color:#8b9ab0;border-top:1px solid #243349;margin-top:22px;padding-top:18px}
-</style>
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
@@ -334,6 +240,17 @@
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <h2 class="sec">Sigue leyendo</h2>
+    <div class="related reveal">
+      <a href="robot-aspirador-calidad-precio-menos-300-euros.html">Calidad-precio &lt; 300€<small>Los mejores sin gastar de más</small></a>
+      <a href="mejor-robot-aspirador-pelos-mascotas.html">Para pelos de mascota<small>Si tienes perro o gato</small></a>
+      <a href="roborock-vs-conga.html">Roborock vs Conga<small>El cara a cara de las marcas top</small></a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="logo" style="color:#fff">Domótica<span style="color:#9ec1ff">Fácil</span></div>
@@ -349,24 +266,7 @@
   </div>
 </footer>
 
-<script>
-  /* ====== CONFIG: rellena esto cuando tengas tu cuenta de Amazon Afiliados ====== */
-  const TAG_AFILIADO = "PENDIENTE-21";          // <- tu Associate Tag (ej: tunombre-21)
-  const DOMINIO_AMAZON = "www.amazon.es";        // mercado
-  /* Cuando tengas los ASIN reales de cada producto, sustituye los data-asin del HTML
-     (ASIN_CONGA_Z100, etc.) por el ASIN real (lo ves en la URL de Amazon: /dp/XXXXXXXXXX). */
-
-  document.querySelectorAll('a[data-asin]').forEach(a=>{
-    const asin = a.getAttribute('data-asin');
-    a.href = `https://${DOMINIO_AMAZON}/dp/${asin}?tag=${TAG_AFILIADO}`;
-  });
-
-  /* Reveal on scroll (ligero, sin librerías) */
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+<script src="assets/afiliados.js"></script>
 
 <!-- SEO: datos estructurados (sin valoraciones inventadas) -->
 <script type="application/ld+json">
