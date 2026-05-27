@@ -138,3 +138,8 @@ footer a{color:#9ec1ff}
 .rev-head{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start;margin-top:20px}
 @media(max-width:680px){.rev-head{grid-template-columns:1fr}}
 .rev-score{display:inline-flex;align-items:center;gap:10px;background:#ecfdf5;color:#067a55;font-weight:700;padding:8px 16px;border-radius:999px;font-family:'Sora'}
+
+/* a11y: enlaces dentro del contenido distinguibles por algo más que el color */
+.prose a, .for-who a, .faq details p a{text-decoration:underline}
+/* contraste algo mayor en notas de editor (se quitan antes de publicar) */
+.verify{color:#6b7787}
