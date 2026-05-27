@@ -20,6 +20,9 @@
     { "key": "ASIN_GOVEE_LED",     "asin": "PENDIENTE", "nombre": "Govee (tira LED)",           "cluster": "iluminacion-y-energia" },
     { "key": "ASIN_TADO",          "asin": "PENDIENTE", "nombre": "tado° (termostato)",         "cluster": "climatizacion" },
     { "key": "ASIN_NEST",          "asin": "PENDIENTE", "nombre": "Google Nest (termostato)",   "cluster": "climatizacion" },
-    { "key": "ASIN_NETATMO",       "asin": "PENDIENTE", "nombre": "Netatmo (termostato)",       "cluster": "climatizacion" }
+    { "key": "ASIN_NETATMO",       "asin": "PENDIENTE", "nombre": "Netatmo (termostato)",       "cluster": "climatizacion" },
+    { "key": "ASIN_ECHO_DOT",      "asin": "PENDIENTE", "nombre": "Echo Dot",                   "cluster": "control-y-ecosistema" },
+    { "key": "ASIN_ECHO_SHOW",     "asin": "PENDIENTE", "nombre": "Echo Show",                  "cluster": "control-y-ecosistema" },
+    { "key": "ASIN_ECHO_POP",      "asin": "PENDIENTE", "nombre": "Echo Pop",                   "cluster": "control-y-ecosistema" }
   ]
 }
