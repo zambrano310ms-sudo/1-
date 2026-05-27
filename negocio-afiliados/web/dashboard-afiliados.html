@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Afiliados | Domótica Fácil</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="logo">Domótica<span>Fácil</span> · Panel</div>
+    <div class="nav-links"><a href="index.html">Ver web</a></div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom:0">
+  <div class="wrap">
+    <h1 style="font-size:clamp(1.8rem,4vw,2.4rem)">Dashboard de afiliados</h1>
+    <div class="demo-banner">
+      📊 <b>Datos de ejemplo (DEMO).</b> Sustituye <code>datos-afiliados.js</code> por tus cifras reales: descarga el informe CSV de tu panel de Amazon Associates (Informes → Resumen) y vuelca clics, pedidos e ingresos. <b>No publiques estas cifras como reales.</b>
+    </div>
+  </div>
+</header>
+
+<section style="padding-top:8px">
+  <div class="wrap">
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi reveal"><div class="label">Ingresos (mes)</div><div class="value" id="kpi-ingresos">—</div><div class="sub" id="kpi-ingresos-sub"></div></div>
+      <div class="kpi reveal"><div class="label">Clics</div><div class="value" id="kpi-clics">—</div></div>
+      <div class="kpi reveal"><div class="label">Pedidos</div><div class="value" id="kpi-pedidos">—</div></div>
+      <div class="kpi reveal"><div class="label">Conversión</div><div class="value" id="kpi-conv">—</div><div class="sub">pedidos / clic</div></div>
+      <div class="kpi reveal"><div class="label">EPC</div><div class="value" id="kpi-epc">—</div><div class="sub">ingreso por clic</div></div>
+    </div>
+
+    <!-- Progreso a 3 ventas -->
+    <div class="panel reveal">
+      <h3>Objetivo de arranque: 3 ventas en 180 días</h3>
+      <div class="progress"><div id="prog-fill" style="width:0%"></div></div>
+      <p style="margin-top:10px;color:var(--muted);font-size:.9rem" id="prog-text"></p>
+    </div>
+
+    <!-- Evolución mensual -->
+    <div class="panel reveal">
+      <h3>Evolución de ingresos por mes (€)</h3>
+      <div class="bars" id="bars"></div>
+    </div>
+
+    <!-- Por artículo -->
+    <div class="panel reveal">
+      <h3>Rendimiento por artículo</h3>
+      <div style="overflow-x:auto">
+        <table class="dtable" id="tabla-articulos">
+          <thead><tr><th>Artículo</th><th>Clics</th><th>Pedidos</th><th>Ingresos</th><th>Conv.</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:#fff">Domótica<span style="color:#9ec1ff">Fácil</span></div>
+    <p class="foot-discl">Panel interno de seguimiento. Las cifras mostradas son de ejemplo hasta que conectes tus informes reales de Amazon Associates. © 2026 Domótica Fácil.</p>
+  </div>
+</footer>
+
+<script src="datos-afiliados.js"></script>
+<script>
+  const fmt = n => new Intl.NumberFormat('es-ES').format(n);
+  const eur = n => new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
+
+  const d = window.DATOS_AFILIADOS;
+  // KPIs
+  document.getElementById('kpi-ingresos').textContent = eur(d.mesActual.ingresos);
+  document.getElementById('kpi-ingresos-sub').textContent = (d.mesActual.variacion>=0?'▲ ':'▼ ') + Math.abs(d.mesActual.variacion) + '% vs mes anterior';
+  document.getElementById('kpi-clics').textContent = fmt(d.mesActual.clics);
+  document.getElementById('kpi-pedidos').textContent = fmt(d.mesActual.pedidos);
+  const conv = d.mesActual.clics ? (d.mesActual.pedidos/d.mesActual.clics*100) : 0;
+  document.getElementById('kpi-conv').textContent = conv.toFixed(1)+'%';
+  const epc = d.mesActual.clics ? (d.mesActual.ingresos/d.mesActual.clics) : 0;
+  document.getElementById('kpi-epc').textContent = eur(epc);
+
+  // Progreso 3 ventas
+  const pct = Math.min(100, d.arranque.ventas/3*100);
+  document.getElementById('prog-fill').style.width = pct+'%';
+  document.getElementById('prog-text').textContent =
+    `${d.arranque.ventas} de 3 ventas · quedan ${d.arranque.diasRestantes} días del periodo de prueba.`;
+
+  // Bar chart
+  const max = Math.max(...d.evolucion.map(m=>m.ingresos), 1);
+  document.getElementById('bars').innerHTML = d.evolucion.map(m=>{
+    const h = Math.round(m.ingresos/max*100);
+    return `<div class="bar"><span class="bval">${eur(m.ingresos)}</span><div class="fill" style="height:${h}%"></div><span class="blabel">${m.mes}</span></div>`;
+  }).join('');
+
+  // Tabla por artículo
+  document.querySelector('#tabla-articulos tbody').innerHTML = d.articulos.map(a=>{
+    const c = a.clics ? (a.pedidos/a.clics*100).toFixed(1)+'%' : '—';
+    return `<tr><td>${a.titulo}</td><td>${fmt(a.clics)}</td><td>${fmt(a.pedidos)}</td><td>${eur(a.ingresos)}</td><td>${c}</td></tr>`;
+  }).join('');
+
+  // reveal
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

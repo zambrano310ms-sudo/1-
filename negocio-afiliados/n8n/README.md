@@ -8,6 +8,7 @@ Workflows para mantener el negocio funcionando solo. Están en formato **JSON im
 |---------|----------|---------------|
 | `workflow-monitorizacion-web.json` | Comprueba cada 30 min que la web responde; si está caída, te avisa por Telegram | ✅ Sí (solo necesita la URL + bot de Telegram) |
 | `workflow-refresco-precios-paapi.json` | Cada 24 h consulta precios/disponibilidad reales en Amazon vía PA-API y avisa de productos agotados | ⏳ Fase automática (necesita PA-API, tras tus 3 ventas) |
+| `workflow-distribucion-redes.json` | Cada semana genera el copy de un artículo para Instagram, Facebook y X, listo para publicar | ⏳ Necesita conectar tus redes (Buffer/Meta/X) |
 | `paapi-getitems-code-node.js` | Código del nodo que firma la petición a la PA-API (SigV4). Es el que va dentro del workflow de precios | — |
 | `products.json` | Lista de ASINs del sitio (la fuente de verdad que lee el refresco) | — |
 
@@ -48,9 +49,10 @@ PAAPI_PARTNER_TAG=tunombre-21
                                           └─→ [¿agotado?] → Telegram   (refresco de precios · fase auto)
 ```
 
-Workflows previstos para más adelante (cuando haya credenciales de publicación/redes):
-- **Publicación de contenido**: genera el siguiente artículo del backlog, pasa la auditoría SEO y lo publica.
-- **Distribución en redes**: convierte cada artículo en posts/reels y los programa.
+El workflow de **distribución en redes** ya genera el copy por plataforma; solo falta conectar tu cuenta (Buffer, Meta Graph API o X) en el último nodo para que publique solo.
+
+Workflow previsto para más adelante:
+- **Publicación de contenido**: genera el siguiente artículo del backlog, pasa la auditoría SEO y lo publica en la web.
 
 > Nota: el "Guardar precios.json" es un placeholder porque persistir el archivo depende de tu hosting (FTP/SFTP, API del CMS, commit a Git, etc.). Cuando elijas hosting, sustituimos ese nodo por el de tu plataforma. En fase de arranque no se muestran precios, así que este workflow se activa al pasar a fase automática.
 

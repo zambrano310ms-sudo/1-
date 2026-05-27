@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard-afiliados.html
+Disallow: /datos-afiliados.js
+
+Sitemap: https://DOMINIO.es/sitemap.xml

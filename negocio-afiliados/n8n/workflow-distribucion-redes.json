@@ -1,0 +1,101 @@
+{
+  "name": "Afiliados · Distribución en redes",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "weeksInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "bbbb0000-0000-0000-0000-000000000001",
+      "name": "Cada semana",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Artículo a promocionar esta semana. Cambia los valores o conéctalo a tu lista de contenidos.\nreturn [{ json: {\n  titulo: \"Mejor robot aspirador 2026: comparativa y guía\",\n  url: \"https://TU-DOMINIO.es/mejor-robot-aspirador-2026.html\",\n  gancho: \"Te enseñamos cuál acierta según tu casa, mascotas y presupuesto — sin tecnicismos.\"\n} }];"
+      },
+      "id": "bbbb0000-0000-0000-0000-000000000002",
+      "name": "Artículo a promocionar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Genera el copy para cada red a partir del artículo.\nconst a = $input.first().json;\nconst hashtags = \"#domotica #casainteligente #smarthome #robotaspirador\";\nconst posts = {\n  instagram: `${a.titulo} 🏠\\n\\n${a.gancho}\\n\\nGuía completa en el enlace de la bio 👆\\n\\n${hashtags}`,\n  facebook:  `${a.titulo}\\n\\n${a.gancho}\\n\\n👉 ${a.url}`,\n  twitter:   `${a.titulo} 🏠\\n${a.gancho}\\n${a.url}`\n};\n// IMPORTANTE (Amazon): el link de afiliado va dentro de la web, NO directo en el post.\nreturn Object.entries(posts).map(([red, texto]) => ({ json: { red, texto, url: a.url } }));"
+      },
+      "id": "bbbb0000-0000-0000-0000-000000000003",
+      "name": "Generar copy para redes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "bbbb0000-0000-0000-0000-000000000004",
+      "name": "Publicar (configura Buffer/Meta/X)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        920,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Cada semana": {
+      "main": [
+        [
+          {
+            "node": "Artículo a promocionar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Artículo a promocionar": {
+      "main": [
+        [
+          {
+            "node": "Generar copy para redes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar copy para redes": {
+      "main": [
+        [
+          {
+            "node": "Publicar (configura Buffer/Meta/X)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false
+}
