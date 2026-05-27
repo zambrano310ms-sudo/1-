@@ -68,6 +68,7 @@ tbody tr:hover{background:#f3f7ff}
 .proscons{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
 @media(max-width:520px){.proscons{grid-template-columns:1fr}}
 .proscons ul{list-style:none;font-size:.9rem}
+.pc-h{display:block;font-weight:700;margin-bottom:6px;font-size:.9rem}
 .proscons li{padding-left:22px;position:relative;margin-bottom:6px}
 .pros li::before{content:"\2713";position:absolute;left:0;color:var(--accent);font-weight:700}
 .cons li::before{content:"\2013";position:absolute;left:0;color:#e05252;font-weight:700}
@@ -90,9 +91,10 @@ tbody tr:hover{background:#f3f7ff}
 .related a:hover{border-color:var(--brand)}
 .related a small{display:block;color:var(--muted);font-weight:400;margin-top:4px}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(18px);transition:.6s ease}
+/* reveal (la ocultación solo aplica si hay JS: clase .js en <html>) */
+.js .reveal{opacity:0;transform:translateY(18px);transition:.6s ease}
 .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
 
 footer{background:#0f1b2d;color:#c3cede;margin-top:40px;padding:40px 0}
 footer a{color:#9ec1ff}
