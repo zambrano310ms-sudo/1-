@@ -1,0 +1,29 @@
+{
+  "programa": "ES",
+  "dominioAmazon": "amazon.es",
+  "idioma": "es",
+  "associateTag": "PENDIENTE",
+  "paApi": {
+    "activa": false,
+    "accessKey": "",
+    "secretKey": "",
+    "partnerTag": ""
+  },
+  "nicho": "hogar-inteligente",
+  "anguloEditorial": "Domótica fácil para tu casa — guías y comparativas sin tecnicismos para gente normal",
+  "categoriaPunta": "robots-aspirador",
+  "dominioWeb": "PENDIENTE",
+  "fase": "arranque",
+  "objetivoArranque": {
+    "ventasNecesarias": 3,
+    "plazoDias": 180,
+    "estado": "sin-cuenta-todavia"
+  },
+  "clusters": [
+    "limpieza-inteligente",
+    "seguridad",
+    "iluminacion-y-energia",
+    "climatizacion",
+    "control-y-ecosistema"
+  ]
+}
