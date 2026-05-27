@@ -35,6 +35,23 @@
     { "key": "ASIN_SONOFF_SENSOR",    "asin": "PENDIENTE", "nombre": "Sonoff (sensor)",         "cluster": "seguridad" },
     { "key": "ASIN_LEVOIT_PURIF",     "asin": "PENDIENTE", "nombre": "Levoit (purificador)",    "cluster": "climatizacion" },
     { "key": "ASIN_XIAOMI_PURIF",     "asin": "PENDIENTE", "nombre": "Xiaomi (purificador)",    "cluster": "climatizacion" },
-    { "key": "ASIN_PHILIPS_PURIF",    "asin": "PENDIENTE", "nombre": "Philips (purificador)",   "cluster": "climatizacion" }
+    { "key": "ASIN_PHILIPS_PURIF",    "asin": "PENDIENTE", "nombre": "Philips (purificador)",   "cluster": "climatizacion" },
+    { "key": "ASIN_CECOTEC_ESCOBA",   "asin": "PENDIENTE", "nombre": "Cecotec Conga (escoba)",  "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_DYSON_ESCOBA",     "asin": "PENDIENTE", "nombre": "Dyson (escoba)",          "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_ROWENTA_ESCOBA",   "asin": "PENDIENTE", "nombre": "Rowenta (escoba)",        "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_XIAOMI_ESCOBA",    "asin": "PENDIENTE", "nombre": "Xiaomi (escoba)",         "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_NARWAL_FRIEGA",    "asin": "PENDIENTE", "nombre": "Narwal (friegasuelos)",   "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_ROBOROCK_FRIEGA",  "asin": "PENDIENTE", "nombre": "Roborock (friegasuelos)", "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_DREAME_FRIEGA",    "asin": "PENDIENTE", "nombre": "Dreame (friegasuelos)",   "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_COSORI_AIR",       "asin": "PENDIENTE", "nombre": "Cosori (freidora aire)",  "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_CECOTEC_AIR",      "asin": "PENDIENTE", "nombre": "Cecotec Cecofry",         "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_NINJA_AIR",        "asin": "PENDIENTE", "nombre": "Ninja (freidora aire)",   "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_PHILIPS_AIR",      "asin": "PENDIENTE", "nombre": "Philips Airfryer",        "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_XIAOMI_BASCULA",   "asin": "PENDIENTE", "nombre": "Xiaomi (báscula)",        "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_RENPHO_BASCULA",   "asin": "PENDIENTE", "nombre": "RENPHO (báscula)",        "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_WITHINGS_BASCULA", "asin": "PENDIENTE", "nombre": "Withings (báscula)",      "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_ECHO_SHOW8",       "asin": "PENDIENTE", "nombre": "Echo Show 8",             "cluster": "control-y-ecosistema" },
+    { "key": "ASIN_ECHO_SHOW5",       "asin": "PENDIENTE", "nombre": "Echo Show 5",             "cluster": "control-y-ecosistema" },
+    { "key": "ASIN_NEST_HUB",         "asin": "PENDIENTE", "nombre": "Google Nest Hub",         "cluster": "control-y-ecosistema" }
   ]
 }
