@@ -29,6 +29,12 @@
     { "key": "ASIN_SWITCHBOT_LOCK","asin": "PENDIENTE", "nombre": "SwitchBot Lock",             "cluster": "seguridad" },
     { "key": "ASIN_GOVEE_STRIP",   "asin": "PENDIENTE", "nombre": "Govee (tira LED)",           "cluster": "iluminacion-y-energia" },
     { "key": "ASIN_HUE_STRIP",     "asin": "PENDIENTE", "nombre": "Philips Hue (tira LED)",     "cluster": "iluminacion-y-energia" },
-    { "key": "ASIN_LEPRO_STRIP",   "asin": "PENDIENTE", "nombre": "LE/Lepro (tira LED)",        "cluster": "iluminacion-y-energia" }
+    { "key": "ASIN_LEPRO_STRIP",   "asin": "PENDIENTE", "nombre": "LE/Lepro (tira LED)",        "cluster": "iluminacion-y-energia" },
+    { "key": "ASIN_AQARA_SENSOR",     "asin": "PENDIENTE", "nombre": "Aqara (sensor)",          "cluster": "seguridad" },
+    { "key": "ASIN_SWITCHBOT_SENSOR", "asin": "PENDIENTE", "nombre": "SwitchBot (sensor)",      "cluster": "seguridad" },
+    { "key": "ASIN_SONOFF_SENSOR",    "asin": "PENDIENTE", "nombre": "Sonoff (sensor)",         "cluster": "seguridad" },
+    { "key": "ASIN_LEVOIT_PURIF",     "asin": "PENDIENTE", "nombre": "Levoit (purificador)",    "cluster": "climatizacion" },
+    { "key": "ASIN_XIAOMI_PURIF",     "asin": "PENDIENTE", "nombre": "Xiaomi (purificador)",    "cluster": "climatizacion" },
+    { "key": "ASIN_PHILIPS_PURIF",    "asin": "PENDIENTE", "nombre": "Philips (purificador)",   "cluster": "climatizacion" }
   ]
 }
