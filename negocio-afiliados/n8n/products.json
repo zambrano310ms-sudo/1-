@@ -52,6 +52,18 @@
     { "key": "ASIN_WITHINGS_BASCULA", "asin": "PENDIENTE", "nombre": "Withings (báscula)",      "cluster": "cocina-y-hogar" },
     { "key": "ASIN_ECHO_SHOW8",       "asin": "PENDIENTE", "nombre": "Echo Show 8",             "cluster": "control-y-ecosistema" },
     { "key": "ASIN_ECHO_SHOW5",       "asin": "PENDIENTE", "nombre": "Echo Show 5",             "cluster": "control-y-ecosistema" },
-    { "key": "ASIN_NEST_HUB",         "asin": "PENDIENTE", "nombre": "Google Nest Hub",         "cluster": "control-y-ecosistema" }
+    { "key": "ASIN_NEST_HUB",         "asin": "PENDIENTE", "nombre": "Google Nest Hub",         "cluster": "control-y-ecosistema" },
+    { "key": "ASIN_CECOTEC_MAMBO",       "asin": "PENDIENTE", "nombre": "Cecotec Mambo",            "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_MOULINEX_COMPANION",  "asin": "PENDIENTE", "nombre": "Moulinex Companion",       "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_TAURUS_MYCOOK",       "asin": "PENDIENTE", "nombre": "Taurus Mycook",            "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_NESPRESSO_CAFE",      "asin": "PENDIENTE", "nombre": "Nespresso (cafetera)",     "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_CECOTEC_CAFE",        "asin": "PENDIENTE", "nombre": "Cecotec (cafetera)",       "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_DELONGHI_CAFE",       "asin": "PENDIENTE", "nombre": "De'Longhi (cafetera)",     "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_TADO_TRV",            "asin": "PENDIENTE", "nombre": "tado° (cabezal radiador)", "cluster": "climatizacion" },
+    { "key": "ASIN_AQARA_TRV",           "asin": "PENDIENTE", "nombre": "Aqara (cabezal radiador)", "cluster": "climatizacion" },
+    { "key": "ASIN_SONOFF_TRV",          "asin": "PENDIENTE", "nombre": "Sonoff TRVZB",             "cluster": "climatizacion" },
+    { "key": "ASIN_AQARA_HUB",           "asin": "PENDIENTE", "nombre": "Aqara Hub",                "cluster": "control-y-ecosistema" },
+    { "key": "ASIN_SMARTTHINGS_HUB",     "asin": "PENDIENTE", "nombre": "SmartThings Hub",          "cluster": "control-y-ecosistema" },
+    { "key": "ASIN_ECHO_HUB",            "asin": "PENDIENTE", "nombre": "Echo con hub integrado",   "cluster": "control-y-ecosistema" }
   ]
 }
