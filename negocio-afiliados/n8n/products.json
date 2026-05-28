@@ -64,6 +64,21 @@
     { "key": "ASIN_SONOFF_TRV",          "asin": "PENDIENTE", "nombre": "Sonoff TRVZB",             "cluster": "climatizacion" },
     { "key": "ASIN_AQARA_HUB",           "asin": "PENDIENTE", "nombre": "Aqara Hub",                "cluster": "control-y-ecosistema" },
     { "key": "ASIN_SMARTTHINGS_HUB",     "asin": "PENDIENTE", "nombre": "SmartThings Hub",          "cluster": "control-y-ecosistema" },
-    { "key": "ASIN_ECHO_HUB",            "asin": "PENDIENTE", "nombre": "Echo con hub integrado",   "cluster": "control-y-ecosistema" }
+    { "key": "ASIN_ECHO_HUB",            "asin": "PENDIENTE", "nombre": "Echo con hub integrado",   "cluster": "control-y-ecosistema" },
+    { "key": "ASIN_HISENSE_TV",          "asin": "PENDIENTE", "nombre": "Hisense (Smart TV)",       "cluster": "entretenimiento" },
+    { "key": "ASIN_LG_OLED",             "asin": "PENDIENTE", "nombre": "LG OLED",                  "cluster": "entretenimiento" },
+    { "key": "ASIN_SAMSUNG_QLED",        "asin": "PENDIENTE", "nombre": "Samsung Neo QLED",         "cluster": "entretenimiento" },
+    { "key": "ASIN_SONY_BRAVIA",         "asin": "PENDIENTE", "nombre": "Sony Bravia",              "cluster": "entretenimiento" },
+    { "key": "ASIN_SONY_WH",             "asin": "PENDIENTE", "nombre": "Sony WH-1000XM",           "cluster": "entretenimiento" },
+    { "key": "ASIN_AIRPODS",             "asin": "PENDIENTE", "nombre": "Apple AirPods",            "cluster": "entretenimiento" },
+    { "key": "ASIN_BOSE_QC",             "asin": "PENDIENTE", "nombre": "Bose QuietComfort",        "cluster": "entretenimiento" },
+    { "key": "ASIN_ANKER_BUDS",          "asin": "PENDIENTE", "nombre": "Anker Soundcore",          "cluster": "entretenimiento" },
+    { "key": "ASIN_BRAUN_BAT",           "asin": "PENDIENTE", "nombre": "Braun MultiQuick",         "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_BOSCH_BAT",           "asin": "PENDIENTE", "nombre": "Bosch ErgoMixx",           "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_CECOTEC_BAT",         "asin": "PENDIENTE", "nombre": "Cecotec (batidora)",       "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_APPLE_WATCH",         "asin": "PENDIENTE", "nombre": "Apple Watch",              "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_GALAXY_WATCH",        "asin": "PENDIENTE", "nombre": "Samsung Galaxy Watch",     "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_GARMIN",              "asin": "PENDIENTE", "nombre": "Garmin (smartwatch)",      "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_XIAOMI_BAND",         "asin": "PENDIENTE", "nombre": "Xiaomi Smart Band",        "cluster": "cocina-y-hogar" }
   ]
 }
