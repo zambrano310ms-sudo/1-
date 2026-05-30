@@ -79,6 +79,20 @@
     { "key": "ASIN_APPLE_WATCH",         "asin": "PENDIENTE", "nombre": "Apple Watch",              "cluster": "cocina-y-hogar" },
     { "key": "ASIN_GALAXY_WATCH",        "asin": "PENDIENTE", "nombre": "Samsung Galaxy Watch",     "cluster": "cocina-y-hogar" },
     { "key": "ASIN_GARMIN",              "asin": "PENDIENTE", "nombre": "Garmin (smartwatch)",      "cluster": "cocina-y-hogar" },
-    { "key": "ASIN_XIAOMI_BAND",         "asin": "PENDIENTE", "nombre": "Xiaomi Smart Band",        "cluster": "cocina-y-hogar" }
+    { "key": "ASIN_XIAOMI_BAND",         "asin": "PENDIENTE", "nombre": "Xiaomi Smart Band",        "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_WORX_LANDROID",       "asin": "PENDIENTE", "nombre": "Worx Landroid",             "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_GARDENA_SILENO",      "asin": "PENDIENTE", "nombre": "Gardena Sileno",            "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_HUSQVARNA_AM",        "asin": "PENDIENTE", "nombre": "Husqvarna Automower",       "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_STIHL_IMOW",          "asin": "PENDIENTE", "nombre": "Stihl iMow",                "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_BLACKDECKER_AM",      "asin": "PENDIENTE", "nombre": "Black+Decker Dustbuster",   "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_BOSCH_AM",            "asin": "PENDIENTE", "nombre": "Bosch (aspirador mano)",    "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_ROIDMI_AM",           "asin": "PENDIENTE", "nombre": "Roidmi (aspirador mano)",   "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_XIAOMI_AM",           "asin": "PENDIENTE", "nombre": "Xiaomi (aspirador mano)",   "cluster": "limpieza-inteligente" },
+    { "key": "ASIN_CECOTEC_MO",          "asin": "PENDIENTE", "nombre": "Cecotec (microondas)",      "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_SAMSUNG_MO",          "asin": "PENDIENTE", "nombre": "Samsung (microondas)",      "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_LG_MO",               "asin": "PENDIENTE", "nombre": "LG (microondas)",           "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_CECOTEC_ESTUFA",      "asin": "PENDIENTE", "nombre": "Cecotec Ready Warm",        "cluster": "climatizacion" },
+    { "key": "ASIN_ORBEGOZO_ESTUFA",     "asin": "PENDIENTE", "nombre": "Orbegozo (estufa)",         "cluster": "climatizacion" },
+    { "key": "ASIN_ROWENTA_ESTUFA",      "asin": "PENDIENTE", "nombre": "Rowenta (estufa)",          "cluster": "climatizacion" }
   ]
 }
