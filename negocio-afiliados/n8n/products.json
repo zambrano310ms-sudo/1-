@@ -93,6 +93,19 @@
     { "key": "ASIN_LG_MO",               "asin": "PENDIENTE", "nombre": "LG (microondas)",           "cluster": "cocina-y-hogar" },
     { "key": "ASIN_CECOTEC_ESTUFA",      "asin": "PENDIENTE", "nombre": "Cecotec Ready Warm",        "cluster": "climatizacion" },
     { "key": "ASIN_ORBEGOZO_ESTUFA",     "asin": "PENDIENTE", "nombre": "Orbegozo (estufa)",         "cluster": "climatizacion" },
-    { "key": "ASIN_ROWENTA_ESTUFA",      "asin": "PENDIENTE", "nombre": "Rowenta (estufa)",          "cluster": "climatizacion" }
+    { "key": "ASIN_ROWENTA_ESTUFA",      "asin": "PENDIENTE", "nombre": "Rowenta (estufa)",          "cluster": "climatizacion" },
+    { "key": "ASIN_IPAD",                "asin": "PENDIENTE", "nombre": "Apple iPad",                "cluster": "entretenimiento" },
+    { "key": "ASIN_GALAXY_TAB",          "asin": "PENDIENTE", "nombre": "Samsung Galaxy Tab",        "cluster": "entretenimiento" },
+    { "key": "ASIN_XIAOMI_PAD",          "asin": "PENDIENTE", "nombre": "Xiaomi Pad",                "cluster": "entretenimiento" },
+    { "key": "ASIN_LENOVO_TAB",          "asin": "PENDIENTE", "nombre": "Lenovo Tab",                "cluster": "entretenimiento" },
+    { "key": "ASIN_ROWENTA_PLANCHA",     "asin": "PENDIENTE", "nombre": "Rowenta (plancha)",         "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_PHILIPS_PLANCHA",     "asin": "PENDIENTE", "nombre": "Philips PerfectCare",       "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_CECOTEC_PLANCHA",     "asin": "PENDIENTE", "nombre": "Cecotec (plancha)",         "cluster": "cocina-y-hogar" },
+    { "key": "ASIN_PROBREEZE_DH",        "asin": "PENDIENTE", "nombre": "Pro Breeze (deshumidif.)",  "cluster": "climatizacion" },
+    { "key": "ASIN_CECOTEC_DH",          "asin": "PENDIENTE", "nombre": "Cecotec (deshumidif.)",     "cluster": "climatizacion" },
+    { "key": "ASIN_DELONGHI_DH",         "asin": "PENDIENTE", "nombre": "De'Longhi (deshumidif.)",   "cluster": "climatizacion" },
+    { "key": "ASIN_CECOTEC_VENT",        "asin": "PENDIENTE", "nombre": "Cecotec EnergySilence",     "cluster": "climatizacion" },
+    { "key": "ASIN_ROWENTA_VENT",        "asin": "PENDIENTE", "nombre": "Rowenta (ventilador)",      "cluster": "climatizacion" },
+    { "key": "ASIN_HONEYWELL_VENT",      "asin": "PENDIENTE", "nombre": "Honeywell (ventilador)",    "cluster": "climatizacion" }
   ]
 }
